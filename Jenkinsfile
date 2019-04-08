@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'localMaven'
+    }
+
     parameters {
          string(name: 'tomcat_dev', defaultValue: '54.188.101.100', description: 'Staging Server')
          string(name: 'tomcat_prod', defaultValue: '34.219.161.61', description: 'Production Server')
-    } 
+    }
 
     triggers {
          pollSCM('* * * * *') // Polling Source Control
